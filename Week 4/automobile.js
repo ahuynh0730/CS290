@@ -23,7 +23,7 @@ function sortArr( comparator, array ){
 				array[i] = array[j];
 				array[j] = temp;
 			}	
-  	}
+  		}
 	}
 }
 
