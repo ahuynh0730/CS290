@@ -1,2 +1,2 @@
-# CS290
+# CS290 - Web Development, Winter 2019
  
