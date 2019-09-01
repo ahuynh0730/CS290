@@ -1,0 +1,51 @@
+<!-- Author: Anthony Huynh -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Pool</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+ 
+	<body>
+		<div class="mainText"> Pool </div>
+		<div id= "linkBar">
+			<a href="poolRules.html" class = "links"> <div> Pool Rules </div> </a>
+			<a href="http://flip1.engr.oregonstate.edu:9160/" class="links"> <div> Locations Near You </div> </a>
+			<a href="trickShots.html" class="links"> <div> Crazy Trick Shots </div> </a>
+		</div>
+		
+		<!-- code for carousel obtained from w3schools -->	
+		<div class="slideshow-container">
+
+		<div class="mySlides fade">
+			<div class="numbertext">1 / 3</div>
+			<img src="pictures/picture1.jpg" style="width:100%">
+		</div>
+
+		<div class="mySlides fade">
+			<div class="numbertext">2 / 3</div>
+			<img src="pictures/picture2.jpg" style="width:100%">
+		</div>
+
+		<div class="mySlides fade">
+			<div class="numbertext">3 / 3</div>
+			<img src="pictures/picture3.jpg" style="width:100%">
+		</div>
+
+		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+		<a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+		</div>
+		<br>
+
+		<div style="text-align:center">
+		  <span class="dot" onclick="currentSlide(1)"></span> 
+		  <span class="dot" onclick="currentSlide(2)"></span> 
+		  <span class="dot" onclick="currentSlide(3)"></span> 
+		</div>
+
+		<script src="script.js"></script>	
+	</body>
+</html>
