@@ -24,7 +24,7 @@ function createTable(numberColumns, numberRows){
 			cell.appendChild(cellText);
 			row.appendChild(cell);
 		}
-		tableBody.appendChild(row);
+		tableBody.appendChild(row); 
 	}
 	
 	table.appendChild(tableBody);
