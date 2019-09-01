@@ -12,17 +12,17 @@ var automobiles = [
     new Automobile(2010, "Toyota", "Tacoma", "Pickup"),
     new Automobile(2005, "Lotus", "Elise", "Roadster"),
     new Automobile(2008, "Subaru", "Outback", "Wagon")
-    ];
+];
 
 /*This function sorts arrays using an arbitrary comparator. You pass it a comparator and an array of objects appropriate for that comparator and it will return a new array which is sorted with the largest object in index 0 and the smallest in the last index*/
 function sortArr( comparator, array ){
 	for (var i = 0; i<array.length; i++){
-   	for (var j=0; j<array.length; j++){
-    	if (comparator(array[i], array[j])){
-      	var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    	}	
+		for (var j=0; j<array.length; j++){
+			if (comparator(array[i], array[j])){
+				var temp = array[i];
+				array[i] = array[j];
+				array[j] = temp;
+			}	
   	}
 	}
 }
@@ -46,25 +46,25 @@ function makeComparator( auto1, auto2){
 function typeComparator( auto1, auto2){
 	var type1;
   var type2;
-  //switch statement that will assign type1 and type2 to an integer and compare integers
+	//switch statement that will assign type1 and type2 to an integer and compare integers
 	switch (auto1.type.toLowerCase()){
-    case "roadster":
-    	type1 = 0;
-      break;
-    case "pickup":
-    	type1 = 1;
-      break;
-    case "suv":
-    	type1 = 2;
-      break;
-    case "wagon":
-    	type1 = 3;
-      break;
-    default:
-    	type1 = 4;
-      break;
-  }
-  
+		case "roadster":
+			type1 = 0;
+			break;
+		case "pickup":
+			type1 = 1;
+			break;
+		case "suv":
+			type1 = 2;
+			break;
+		case "wagon":
+			type1 = 3;
+			break;
+		default:
+			type1 = 4;
+			break;
+	}
+
  	switch (auto2.type.toLowerCase()){
     case "roadster":
     	type2 = 0;
