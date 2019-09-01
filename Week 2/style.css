@@ -1,0 +1,27 @@
+/* Author: Anthony Huynh */
+
+table, th, td, tfoot {
+	border: 1px solid black;
+}
+
+tbody tr:nth-of-type(odd){
+	background-color:yellow;
+}
+tbody tr:nth-of-type(even) {
+	background-color: red;
+}
+
+div.outer-content {
+	width: 75%;
+	background-color: pink;
+	align: left;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+div.inner-content {
+	text-align: center;
+	background-color: lightblue;
+	width: 75%;
+	margin: auto;
+}
