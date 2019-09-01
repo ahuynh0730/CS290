@@ -1,4 +1,4 @@
-var apiKey = "&APPID=e2be2a208953a2ba05bc6af9b989e55d";
+var apiKey = "(insert personal key here)";
 
 document.addEventListener("DOMContentLoaded", bindButtons);
 
