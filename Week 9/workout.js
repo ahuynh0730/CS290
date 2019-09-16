@@ -9,7 +9,7 @@ var mysql = require("mysql");
 var pool = mysql.createPool({                   
     host: "classmysql.engr.oregonstate.edu",         
     user: "cs340_huynhant",
-    password: "Affton2012",                         
+    password: "(insert password here)",                         
     database: "cs340_huynhant"
 });
 
