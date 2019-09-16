@@ -1,6 +1,6 @@
 Link to site is below
 
-https://sinjo_000-lovt.localhost.run/
+https://breezy-mouse-5.localtunnel.me/
 
 # HW Assignment: Database interactions and UI
 
