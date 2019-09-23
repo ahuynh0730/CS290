@@ -1,34 +1,21 @@
-//Author: Anthony Huynh
-
-var express = require("express");      
-var app = express();         
+var express = require('express');
+var mysql = require('./dbcon.js');
+var app = express();
 var bodyParser = require("body-parser"); 
-var handlebars = require("express-handlebars").create({defaultLayout: "main"});
-var mysql = require("mysql");
+var handlebars = require('express-handlebars').create({defaultLayout:'main'});
+const util = require('util');
 
-var pool = mysql.createPool({                   
-    host: "classmysql.engr.oregonstate.edu",         
-    user: "cs340_huynhant",
-    password: "(insert password here)",                         
-    database: "cs340_huynhant"
-});
-
-
-app.engine("handlebars", handlebars.engine);        
-app.set("view engine", "handlebars");
-app.set("port", 8201);                             
+app.engine('handlebars', handlebars.engine);
+app.set('view engine', 'handlebars');
+app.set('port', process.argv[2]);
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
-
-
-
-
 //A function that allows us to completely reset the table by visiting the url (given to us)
 app.get('/reset-table',function(req,res,next){                  
     var context = {};
-    pool.query("DROP TABLE IF EXISTS workouts", function(err){
+    mysql.pool.query("DROP TABLE IF EXISTS workouts", function(err){
         var createString = "CREATE TABLE workouts("+
         "id INT PRIMARY KEY AUTO_INCREMENT,"+
         "name VARCHAR(255) NOT NULL,"+
@@ -36,7 +23,7 @@ app.get('/reset-table',function(req,res,next){
         "weight INT,"+
         "date DATE,"+
         "lbs BOOLEAN)";
-        pool.query(createString, function(err){
+        mysql.pool.query(createString, function(err){
             res.render('table',context);
         })
     });
@@ -45,7 +32,7 @@ app.get('/reset-table',function(req,res,next){
 //home page that will display table
 app.get('/', function(req, res, next){
     var context = {};
-    pool.query('SELECT * FROM workouts', function(err, rows, fields){      
+    mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){      
     if(err){                                                                  
         next(err);
         return;
@@ -74,7 +61,7 @@ app.get('/', function(req, res, next){
 //to insert new exercise
 app.get('/insert',function(req,res,next){
   var context = {};
-   pool.query("INSERT INTO `workouts` (`name`, `reps`, `weight`, `date`, `lbs`) VALUES (?, ?, ?, ?, ?)", 
+   mysql.pool.query("INSERT INTO `workouts` (`name`, `reps`, `weight`, `date`, `lbs`) VALUES (?, ?, ?, ?, ?)", 
     [req.query.exercise,               
     req.query.reps, 
     req.query.weight, 
@@ -93,7 +80,7 @@ app.get('/insert',function(req,res,next){
 //to delete from table
 app.get('/delete', function(req, res, next) {
     var context = {};    
-    pool.query("DELETE FROM `workouts` WHERE id = ?",   
+    mysql.pool.query("DELETE FROM `workouts` WHERE id = ?",   
         [req.query.id], 
         function(err, result) {
             if(err){
@@ -107,7 +94,7 @@ app.get('/delete', function(req, res, next) {
 //to update a row
 app.get('/updateTable',function(req, res, next){
     var context = {};
-    pool.query('SELECT * FROM `workouts` WHERE id=?',   
+    mysql.pool.query('SELECT * FROM `workouts` WHERE id=?',   
         [req.query.id], 
         function(err, rows, fields){
             if(err){
@@ -136,7 +123,7 @@ app.get('/updateTable',function(req, res, next){
 app.get('/updateReturn', function(req, res, next){
     var context = {};
 
-    pool.query("SELECT * FROM `workouts` WHERE id=?", 
+    mysql.pool.query("SELECT * FROM `workouts` WHERE id=?", 
         [req.query.id], 
         function(err, result){
             if(err){
@@ -154,7 +141,7 @@ app.get('/updateReturn', function(req, res, next){
                     req.query.unitCheck = "0";
                 }
 
-                pool.query('UPDATE `workouts` SET name=?, reps=?, weight=?, date=?, lbs=? WHERE id=?',  
+                mysql.pool.query('UPDATE `workouts` SET name=?, reps=?, weight=?, date=?, lbs=? WHERE id=?',  
                 [req.query.exercise || current.name, 
                 req.query.reps || current.reps, 
                 req.query.weight || current.weight, 
@@ -167,7 +154,7 @@ app.get('/updateReturn', function(req, res, next){
                         return;
                     }
 
-                    pool.query('SELECT * FROM `workouts`', function(err, rows, fields){     
+                    mysql.pool.query('SELECT * FROM `workouts`', function(err, rows, fields){     
                         if(err){
                             next(err);
                             return;
@@ -214,6 +201,7 @@ app.use(function(err, req, res, next){
   res.status(500);
   res.render('500');
 });
+
 
 
 app.listen(app.get('port'), function(){
