@@ -3,19 +3,19 @@
 
 
 var express = require('express');
-
 var app = express();
-var handlebars = require('express-handlebars').create({defaultLayout:'main'});
 var bodyParser = require('body-parser');
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-
-//app.use(express.static("public"));
+var handlebars = require('express-handlebars').create({defaultLayout:'main'});
+const util = require('util');
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 app.set('port', process.env.PORT || 8080);
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+app.use(express.static(__dirname + '/public'));
+
+
 
 'use strict';
 

@@ -32,6 +32,14 @@ div.mainText{
 	
 }
 
+div.trickShots{
+	color:white;
+	font-size: 160px;
+	transform: translate(20px, 20px) rotate(-13deg);
+	width: 120px;
+	
+}
+
 #rules{
 	font-size: 30px;
 	color: yellow;

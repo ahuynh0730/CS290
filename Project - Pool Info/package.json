@@ -1,19 +1,19 @@
 {
-	"name": "getPostChecker",
-	"version": "1.0.0",
-	"description": "Tests GET and POST. ",
-	"main": "app.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"author": "Anthony Huynh",
-	"license": "ISC",
-	"dependencies": {
-		"body-parser": "^1.13.3",
-		"express": "^4.13.2",
-		"express-handlebars": "^2.0.1",
-		"express-session": "^1.11.3",
-		"mysql": "^2.8.0",
-		"yelp-fusion": "^3.0.0"
-	}
+  "name": "pool-locations",
+  "version": "1.0.0",
+  "description": "app to show nearby locations to play pool",
+  "main": "poolLocations.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anthony Huynh",
+  "license": "ISC",
+  "dependencies": {
+	"body-parser": "^1.13.3",
+	"express": "^4.13.2",
+	"express-handlebars": "^3.1.0",
+	"express-session": "^1.11.3",
+	"mysql": "^2.8.0",
+	"yelp-fusion": "^3.0.0"
+  }
 }
