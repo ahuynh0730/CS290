@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-app.set('port', 9160);
+app.set('port', process.env.PORT || 8080);
 
 'use strict';
 
